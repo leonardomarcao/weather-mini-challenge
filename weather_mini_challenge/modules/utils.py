@@ -17,7 +17,7 @@ class Utils(object):
                 if 'date' == v:
                     for i, row in df.iterrows():
                         try:
-                            df[k][i] = parse(row[k], ignoretz=True, dayfirst=True).date()
+                            df[k][i] = parse(row[k], ignoretz=True, dayfirst=False).date()
                         except TypeError:
                             df[k][i] = pd.NaT
                     return df

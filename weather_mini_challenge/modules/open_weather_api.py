@@ -63,11 +63,11 @@ class OpenWeatherAPI(object):
         else:
             return req.status_code
 
-    def get_df_forecast_next_five_days(self):
+    def get_df_humidity_next_five_days(self):
         utils = Utils()
         df = pd.DataFrame(self.forecast_by_name())
         df = utils.cast_columns(df, columns={'dt_txt': 'date'})
         df['humidity'] = 0
         for i, row in df.iterrows():
             df['humidity'][i] = df['main'][i]['humidity']
-        return df[['humidity', 'dt_txt']]
+        return df[['humidity', 'dt_txt']].groupby(df['dt_txt']).agg({'humidity': ['mean']}, axis="columns")
