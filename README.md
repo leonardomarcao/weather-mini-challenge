@@ -34,7 +34,7 @@ country_id=BRA
 factor_to_rain=70
 message_body=You should take an umbrella in these days:
 ```
-Ps: **Dont forget to change api key**
+Ps: **Dont forget to change api key**. Forecast weather data collection used: https://openweathermap.org/forecast5
 
 #### Output Example
 
