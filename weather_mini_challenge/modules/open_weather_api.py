@@ -1,9 +1,11 @@
+from weather_mini_challenge.modules.utils import Utils
 from weather_mini_challenge.config.base import (
     API_KEY,
     API_URL
 )
 import requests
 import json
+import pandas as pd
 
 
 class OpenWeatherAPI(object):
@@ -60,3 +62,12 @@ class OpenWeatherAPI(object):
             return req['list']
         else:
             return req.status_code
+
+    def get_df_forecast_next_five_days(self):
+        utils = Utils()
+        df = pd.DataFrame(self.forecast_by_name())
+        df = utils.cast_columns(df, columns={'dt_txt': 'date'})
+        df['humidity'] = 0
+        for i, row in df.iterrows():
+            df['humidity'][i] = df['main'][i]['humidity']
+        return df[['humidity', 'dt_txt']]
