@@ -15,7 +15,12 @@ CITY_NAME = env('city_name')
 # COUNTRY ID. THIS SHOULD BE "ISO 3166"
 COUNTRY_ID = env('country_id')
 # FACTOR TO CONSIDER RAIN AND TAKE AN UMBRELLA
-FACTOR_TO_RAIN = env('factor_to_rain')
+try:
+    FACTOR_TO_RAIN = int(env('factor_to_rain'))
+except ValueError:
+    raise Exception('Factor to rain must be int')
+# MESSAGE BODY
+MESSAGE_BODY = env('message_body')
 ###############################
 # END ENVIRONMENT VARIABLES   #
 ###############################

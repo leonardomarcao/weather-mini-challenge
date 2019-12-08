@@ -9,6 +9,5 @@ class App(object):
     def __init__(self):
         self.open_weather_api = OpenWeatherAPI(city_name=CITY_NAME,
                                                country_id=COUNTRY_ID)
-
-
+        self.open_weather_api.display_message_take_an_umbrella()
 

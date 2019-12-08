@@ -1,11 +1,15 @@
 from weather_mini_challenge.modules.utils import Utils
 from weather_mini_challenge.config.base import (
     API_KEY,
-    API_URL
+    API_URL,
+    MESSAGE_BODY,
+    FACTOR_TO_RAIN
 )
 import requests
 import json
 import pandas as pd
+
+pd.options.mode.chained_assignment = None  # default='warn'
 
 
 class OpenWeatherAPI(object):
@@ -70,4 +74,12 @@ class OpenWeatherAPI(object):
         df['humidity'] = 0
         for i, row in df.iterrows():
             df['humidity'][i] = df['main'][i]['humidity']
-        return df[['humidity', 'dt_txt']].groupby(df['dt_txt']).agg({'humidity': ['mean']}, axis="columns")
+        return df[['humidity', 'dt_txt']].groupby(df['dt_txt']).agg({'humidity': ['mean']})['humidity']
+
+    def display_message_take_an_umbrella(self):
+        df = self.get_df_humidity_next_five_days()
+        days = ''
+        for i, row in df.iterrows():
+            if row['mean'] > FACTOR_TO_RAIN:
+                days += f'\n{i.strftime("%A")}'
+        print(MESSAGE_BODY+days)
