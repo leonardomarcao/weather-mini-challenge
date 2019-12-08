@@ -14,6 +14,8 @@ API_URL = env('api_url')
 CITY_NAME = env('city_name')
 # COUNTRY ID. THIS SHOULD BE "ISO 3166"
 COUNTRY_ID = env('country_id')
+# FACTOR TO CONSIDER RAIN AND TAKE AN UMBRELLA
+FACTOR_TO_RAIN = env('factor_to_rain')
 ###############################
 # END ENVIRONMENT VARIABLES   #
 ###############################
