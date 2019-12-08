@@ -25,9 +25,7 @@ You should take an umbrella in these days: Monday, Tuesday and Wednesday.
 ```
     pip install -r requirements.txt
 ```
-4. Create .env file 
-
-Env Example: 
+4. Create .env file (**Env Example**):
 ```
 api_url=http://api.openweathermap.org/data/2.5
 api_key=42d388f8b1db997faaf7dab487f11290
@@ -36,7 +34,7 @@ country_id=BRA
 factor_to_rain=70
 message_body=You should take an umbrella in these days:
 ```
-Ps: Dont forget to change api key
+Ps: **Dont forget to change api key**
 
 #### Output Example
 
